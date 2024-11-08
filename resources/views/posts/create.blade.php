@@ -1,6 +1,6 @@
 @extends('layout')
 
-@section('title', 'Créer un Nouveau Post')
+@section('title', 'neu Post')
 
 @section('content')
     <h1>Neuer beitrag erstellen</h1>
@@ -19,10 +19,14 @@
         </div>
 
         <div class="form-group">
-            <label for="post_creator">Ersteller des Posts (ID) :</label>
-            <input type="number" class="form-control" id="post_creator" name="post_creator" required>
+            <label for="post_creator">Ersteller des Posts :</label>
+            <select class="form-control" id="post_creator" name="post_creator" required>
+                @foreach ($users as $user)
+                    <option value="{{ $user->id }}">{{ $user->name }}</option> 
+                @endforeach
+            </select>
         </div>
-
+        
         <button type="submit" class="btn btn-primary">Beitrag erstellen</button>
         <a href="{{ route('posts.index') }}" class="btn btn-secondary">Abbrechen</a>
     </form>
